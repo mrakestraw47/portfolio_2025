@@ -4,145 +4,156 @@
     <meta charset="UTF-8">
     <title>Michael Reece Rakestraw JR - Resume</title>
     <style>
-        /* BASE SCREEN STYLES */
-        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background: #f0f2f5; padding: 20px; }
-        .resume-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { text-align: center; margin-bottom: 5px; color: #2c3e50; text-transform: uppercase; letter-spacing: 1px; }
-        .contact-info { text-align: center; margin-bottom: 20px; font-size: 0.9em; }
-        h2 { border-bottom: 2px solid #2c3e50; color: #2c3e50; font-size: 14pt; margin-top: 15px; margin-bottom: 5px; }
-        h3 { display: flex; justify-content: space-between; align-items: baseline; color: #000; margin-top: 12px; margin-bottom: 3px; font-size: 12pt; }
-        h3 span:last-child { font-weight: normal; font-size: 0.9em; color: #000; text-align: right; min-width: 150px; white-space: nowrap; }
-        #job-reference { max-width: 800px; margin: 0 auto 20px auto; background: #fff3cd; padding: 20px; border: 1px solid #ffeeba; border-radius: 8px; }
-
-        /* INTERACTIVE ELEMENTS */
-        ul { margin: 0; padding-left: 1.2em; }
-        li { position: relative; padding-left: 5px; margin-bottom: 4px; transition: all 0.2s; list-style-type: disc; }
-        .summary-list li { list-style-type: none; padding-left: 0; margin-bottom: 10px; }
-        li.fresh { background-color: #e6fffa; border-left: 3px solid #00b894; }
-        input[type="checkbox"] { margin-right: 10px; cursor: pointer; transform: scale(1.2); }
-        .dimmed { opacity: 0.5; text-decoration: line-through; color: #999; }
-        .bullet-count { font-size: 0.8em; margin-right: 10px; color: #666; font-weight: normal; background: #eee; padding: 1px 6px; border-radius: 4px; }
-        .bullet-count.warning { background: #ff7675; color: white; }
-
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            line-height: 1.5; 
+            color: #333; 
+            background: #f0f2f5; 
+            padding: 20px; 
+        }
+        .resume-container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: #fff; 
+            padding: 40px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        header { 
+            overflow: hidden; 
+            border-bottom: 2px solid #2c3e50; 
+            padding-bottom: 10px; 
+            margin-bottom: 20px; 
+        }
+        .header-content { 
+            float: left; 
+        }
+        .qr-code { 
+            float: right; 
+            text-align: center; 
+        }
+        h1 { 
+            margin: 0; 
+            color: #2c3e50; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            font-size: 24pt;
+        }
+        .contact-info { 
+            margin-top: 5px; 
+            font-size: 0.9em; 
+        }
+        h2 { 
+            border-bottom: 1px solid #eee; 
+            color: #2c3e50; 
+            font-size: 14pt; 
+            margin-top: 20px; 
+            margin-bottom: 10px; 
+            text-transform: uppercase;
+        }
+        h3 { 
+            display: flex; 
+            justify-content: space-between; 
+            color: #000; 
+            margin-top: 15px; 
+            margin-bottom: 5px; 
+            font-size: 12pt; 
+        }
+        .job-date { 
+            font-weight: normal; 
+            font-size: 0.9em; 
+        }
+        ul { 
+            margin: 0; 
+            padding-left: 1.2em; 
+        }
+        li { 
+            margin-bottom: 5px; 
+        }
         @media print {
-            @page { margin: 0.5in; size: letter; }
-            body { background: #fff; padding: 0; font-size: 10.5pt; line-height: 1.25; }
-            .resume-container { box-shadow: none; padding: 0; margin: 0; width: 100%; }
-            #job-reference, .bullet-count, input[type="checkbox"] { display: none !important; }
-            li.exclude-print { display: none !important; }
-            li.fresh { background: none; border: none; padding-left: 0; }
-            .dimmed { display: none !important; }
-            .page-break { page-break-before: always; height: 0; display: block; }
+            body { background: #fff; padding: 0; }
+            .resume-container { box-shadow: none; padding: 0; width: 100%; }
+            @page { margin: 0.5in; }
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const MAX_BULLETS_PER_JOB = 5; 
-
-            function setupInteractivity(selector, isSummary = false) {
-                document.querySelectorAll(selector).forEach(ul => {
-                    const items = ul.querySelectorAll("li");
-                    let counterDisplay = null;
-                    if (!isSummary) {
-                        let header = ul.previousElementSibling;
-                        while(header && header.tagName !== 'H3') { header = header.previousElementSibling; }
-                        counterDisplay = header ? header.querySelector(".bullet-count") : null;
-                    }
-
-                    function updateCounter() {
-                        if (counterDisplay) {
-                            const checkedCount = ul.querySelectorAll("input:checked").length;
-                            counterDisplay.textContent = `${checkedCount} bullets`;
-                            if(checkedCount > MAX_BULLETS_PER_JOB) counterDisplay.classList.add("warning");
-                            else counterDisplay.classList.remove("warning");
-                        }
-                    }
-
-                    items.forEach(li => {
-                        const checkbox = document.createElement("input");
-                        checkbox.type = "checkbox";
-                        if(li.classList.contains("fresh")) {
-                            checkbox.checked = false;
-                            li.classList.add("exclude-print", "dimmed");
-                        } else {
-                            checkbox.checked = true;
-                        }
-                        li.insertBefore(checkbox, li.firstChild);
-                        checkbox.addEventListener("change", function() {
-                            if(this.checked) {
-                                if (isSummary) {
-                                    items.forEach(otherLi => {
-                                        if (otherLi !== li) {
-                                            const otherCb = otherLi.querySelector('input');
-                                            otherCb.checked = false;
-                                            otherLi.classList.add("exclude-print", "dimmed");
-                                        }
-                                    });
-                                }
-                                li.classList.remove("exclude-print", "dimmed");
-                            } else {
-                                li.classList.add("exclude-print", "dimmed");
-                            }
-                            updateCounter();
-                        });
-                    });
-                    updateCounter();
-                });
-            }
-            setupInteractivity(".summary-list", true);
-            setupInteractivity(".resume-container ul:not(.summary-list)", false);
-        });
-    </script>
 </head>
 <body>
-<div style="float: right; margin-left: 20px; text-align: center;">
-    <img src="qr_code.png" alt="QR Code to Portfolio" width="100" height="100">
-    <p style="font-size: 10px; margin-top: 5px;">Scan for Portfolio</p>
+
+<div class="resume-container">
+    <header>
+        <div class="qr-code">
+            <img src="qr_code.png" alt="QR Code to Portfolio" width="100" height="100">
+            <p style="font-size: 10px; margin-top: 5px;">Scan for Portfolio</p>
+        </div>
+        <div class="header-content">
+            <h1>MICHAEL REECE RAKESTRAW JR</h1>
+            <div class="contact-info">
+                Snellville, GA | 770-344-7933 | mrakestraw47@gmail.com<br>
+                <a href="#">Project Portfolio</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="summary">
+        <h2>Professional Summary</h2>
+        <p>Operations Specialist dedicated to process excellence and workflow standardization[cite: 5]. Proven track record of transforming manual, informal procedures into structured digital systems[cite: 5]. Expert at authoring technical SOPs and leveraging Excel to optimize inventory replenishment, ensuring consistent operational continuity[cite: 6].</p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <p>Inventory Management, Inventory Forecasting, Inventory Control, Supply Chain Coordination, Logistics Management, Internal Purchasing, Workflow Optimization, SOP Authoring, Python, SQL, Advanced Excel (VBA/Macros), Data Cleaning, Data Integrity, Operational Troubleshooting, Software Agility (TRAX, Mitchell1), Regulatory Compliance (FAA/IELTS), English (Native/Fluent), Google Data Analytics Professional Certificate[cite: 8].</p>
+    </section>
+
+    <section id="experience">
+        <h2>Professional Experience</h2>
+
+        <h3>
+            <span>Freelance Operations Analyst | Self-Employed [cite: 10]</span>
+            <span class="job-date">Oct 2025 – Nov 2025 [cite: 11]</span>
+        </h3>
+        <ul>
+            <li>Consulted with a client to define assessment goals, subsequently sourcing and processing over 300,000 rows of tax data to identify high-value target demographics[cite: 12].</li>
+            <li>Generated strategic reports containing ranked lists of organizations (filtered by asset density) to guide the client's decision-making process[cite: 13].</li>
+        </ul>
+
+        <h3>
+            <span>IELTS Invigilator | TALK Atlanta [cite: 14]</span>
+            <span class="job-date">Sept 2025 – Present [cite: 15]</span>
+        </h3>
+        <ul>
+            <li>Enforced strict regulatory protocols for high-stakes examinations, performing double-count reconciliations of sensitive materials to ensure 100% accountability of all testing assets[cite: 16].</li>
+            <li>Coordinates logistics for time-sensitive assessments, ensuring efficient candidate flow and immediate resolution of technical or procedural anomalies[cite: 17].</li>
+        </ul>
+
+        <h3>
+            <span>Front End Associate / Operations Support | Lilburn Chevron [cite: 18]</span>
+            <span class="job-date">May 2022 – Oct 2025 [cite: 19]</span>
+        </h3>
+        <ul>
+            <li>Investigated and deployed the system's underutilized Purchase Order function, configuring vendor profiles and part numbers to reduce inventory replenishment time by 85%[cite: 20].</li>
+            <li>Resolved an $800 billing anomaly by cross-referencing a register receipt with an open work order, confirming the double-charge and securing a refund before customer impact[cite: 21].</li>
+            <li>Authored detailed Standard Operating Procedures (SOPs) and checklists for shift closings, ensuring consistent execution and store policy adherence across the team[cite: 22].</li>
+            <li>Streamlined daily cash workflows by developing a web-based application (HTML/JS) to balance drawers, reducing closing calculation errors by 98%[cite: 23].</li>
+        </ul>
+
+        <h3>
+            <span>Materials Specialist | JettPro Line Maintenance [cite: 24]</span>
+            <span class="job-date">Oct 2021 – Mar 2022 [cite: 25]</span>
+        </h3>
+        <ul>
+            <li>Audited and managed aircraft parts inventory within the TRAX database, identifying and resolving over $10,000 in inventory discrepancies through rigorous physical-to-digital verification[cite: 26].</li>
+            <li>Liaised between maintenance crews and external warehouses to expedite the sourcing of AOG (Aircraft on Ground) components, ensuring operational continuity[cite: 27].</li>
+            <li>Managed end-to-end logistics for COMAT shipments, executing strict protocol adherence for TRAX status updates and hazardous materials verification[cite: 28].</li>
+        </ul>
+    </section>
+
+    <section id="education">
+        <h2>Education & Certifications</h2>
+        <ul>
+            <li><strong>High School Diploma</strong> | Regina Caeli Academy, Norcross, GA (GPA: 4.0) [cite: 30]</li>
+            <li><strong>Google Data Analytics Professional Certificate</strong> | Coursera [cite: 30]</li>
+        </ul>
+    </section>
 </div>
 
-<div>
-    <h2>Professional Summary</h2>
-    <ul>
-        <li>Operations Specialist dedicated to process excellence and workflow standardization. Proven track record of transforming manual, informal procedures into structured digital systems. Expert at authoring technical SOPs and leveraging Excel to optimize inventory replenishment, ensuring consistent operational continuity.</li>
-    </ul>
-
-    <h2>Skills</h2>
-    <p>Inventory Management, Inventory Forecasting, Inventory Control, Supply Chain Coordination, Logistics Management, Internal Purchasing, Workflow Optimization, SOP Authoring, Python, SQL, Advanced Excel (VBA/Macros), Data Cleaning, Data Integrity, Operational Troubleshooting, Software Agility (TRAX, Mitchell1), Regulatory Compliance (FAA/IELTS), English (Native/Fluent), Google Data Analytics Professional Certificate</p>
-
-    <h2>Professional Experience</h2>
-
-    <h3>Freelance Operations Analyst | Self-Employed — Oct 2025 – Nov 2025</h3>
-    <ul>
-        <li>Consulted with a client to define assessment goals, subsequently sourcing and processing over 300,000 rows of tax data to identify high-value target demographics.</li>
-        <li>Generated strategic reports containing ranked lists of organizations (filtered by asset density) to guide the client's decision-making process.</li>
-    </ul>
-
-    <h3>IELTS Invigilator | TALK Atlanta — Sept 2025 – Present</h3>
-    <ul>
-        <li>Enforced strict regulatory protocols for high-stakes examinations, performing double-count reconciliations of sensitive materials to ensure 100% accountability of all testing assets.</li>
-        <li>Coordinates logistics for time-sensitive assessments, ensuring efficient candidate flow and immediate resolution of technical or procedural anomalies.</li>
-    </ul>
-
-    <h3>Front End Associate / Operations Support | Lilburn Chevron — May 2022 – Oct 2025</h3>
-    <ul>
-        <li>Investigated and deployed the system's underutilized Purchase Order function, configuring vendor profiles and part numbers to reduce inventory replenishment time by 85%.</li>
-        <li>Resolved an $800 billing anomaly by cross-referencing a register receipt with an open work order, confirming the double-charge and securing a refund before customer impact.</li>
-        <li>Authored detailed Standard Operating Procedures (SOPs) and checklists for shift closings, ensuring consistent execution and store policy adherence across the team.</li>
-        <li>Streamlined daily cash workflows by developing a web-based application (HTML/JS) to balance drawers, reducing closing calculation errors by 98%.</li>
-    </ul>
-
-    <h3>Materials Specialist | JettPro Line Maintenance — Oct 2021 – Mar 2022</h3>
-    <ul>
-        <li>Audited and managed aircraft parts inventory within the TRAX database, identifying and resolving over $10,000 in inventory discrepancies through rigorous physical-to-digital verification.</li>
-        <li>Liaised between maintenance crews and external warehouses to expedite the sourcing of AOG (Aircraft on Ground) components, ensuring operational continuity.</li>
-        <li>Managed end-to-end logistics for COMAT shipments, executing strict protocol adherence for TRAX status updates and hazardous materials verification.</li>
-    </ul>
-
-    <h2>Education & Certifications</h2>
-    <ul>
-        <li><strong>High School Diploma</strong> | <a href="https://www.rcahybrid.org/">Regina Caeli Academy</a>, Norcross, GA (GPA: 4.0)</li>
-        <li><strong><a href="https://www.coursera.org/account/accomplishments/professional-cert/PDCYFIQVLZ9D">Google Data Analytics Professional Certificate</a></strong> | Coursera</li>
-    </ul>
-</div>
-    
 </body>
+</html>
