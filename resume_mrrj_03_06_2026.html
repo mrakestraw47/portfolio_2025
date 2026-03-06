@@ -4,27 +4,45 @@
     <meta charset="UTF-8">
     <title>Michael Reece Rakestraw JR - Resume</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.5; color: #333; background: #f4f7f6; padding: 20px; }
-        .resume-container { max-width: 850px; margin: 0 auto; background: #fff; padding: 50px; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
-        header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #2c3e50; padding-bottom: 20px; margin-bottom: 25px; }
-        h1 { margin: 0; color: #2c3e50; font-size: 26pt; text-transform: uppercase; letter-spacing: 1.5px; }
-        .contact-info { margin-top: 8px; font-size: 10pt; color: #555; }
-        .qr-code { text-align: center; }
-        h2 { border-bottom: 1px solid #ddd; color: #2c3e50; font-size: 15pt; margin-top: 25px; margin-bottom: 12px; text-transform: uppercase; }
-        h3 { display: flex; justify-content: space-between; margin-top: 18px; margin-bottom: 5px; font-size: 12.5pt; color: #000; }
-        .date { font-weight: normal; font-size: 10pt; color: #666; }
-        ul { margin: 0; padding-left: 1.2em; }
-        li { margin-bottom: 7px; }
-        .cover-letter { margin-top: 60px; padding-top: 40px; border-top: 2px dashed #eee; font-size: 11pt; }
-        .signature { margin-top: 20px; font-weight: bold; }
-        a { color: #2980b9; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        @media print {
-            body { background: #fff; padding: 0; }
-            .resume-container { box-shadow: none; padding: 0; width: 100%; }
-            .page-break { page-break-before: always; }
+    /* BASE STYLES - Optimized for 1-Page Fit */
+    body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.35; color: #333; background: #f4f7f6; padding: 10px; }
+    .resume-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px 45px; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+    
+    header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #2c3e50; padding-bottom: 12px; margin-bottom: 15px; }
+    h1 { margin: 0; color: #2c3e50; font-size: 22pt; text-transform: uppercase; letter-spacing: 1px; }
+    .contact-info { margin-top: 4px; font-size: 9.5pt; color: #555; line-height: 1.4; }
+    .qr-code { text-align: center; }
+    
+    h2 { border-bottom: 1px solid #ddd; color: #2c3e50; font-size: 13pt; margin-top: 14px; margin-bottom: 6px; text-transform: uppercase; font-weight: bold; }
+    h3 { display: flex; justify-content: space-between; margin-top: 10px; margin-bottom: 2px; font-size: 11pt; color: #000; font-weight: bold; }
+    .date { font-weight: normal; font-size: 9.5pt; color: #666; min-width: 120px; text-align: right; }
+    
+    p { margin: 4px 0; font-size: 10pt; }
+    ul { margin: 0; padding-left: 1.1em; }
+    li { margin-bottom: 3px; font-size: 10pt; }
+    
+    a { color: #2980b9; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* PRINT OPTIMIZATION */
+    @media print {
+        @page { 
+            size: letter; 
+            margin: 0.35in; /* Tight margins for max space */
         }
-    </style>
+        body { background: #fff; padding: 0; }
+        .resume-container { box-shadow: none; padding: 0; width: 100%; }
+        
+        /* Ensure specific elements don't push to page 2 */
+        header { margin-bottom: 10px; padding-bottom: 8px; }
+        h2 { margin-top: 10px; margin-bottom: 4px; }
+        h3 { margin-top: 6px; }
+        li { margin-bottom: 1.5px; }
+        
+        /* Remove any forced page breaks or excessive spacing */
+        section { page-break-inside: avoid; }
+    }
+</style>
 </head>
 <body>
 
