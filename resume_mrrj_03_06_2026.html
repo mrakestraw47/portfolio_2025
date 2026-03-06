@@ -4,75 +4,25 @@
     <meta charset="UTF-8">
     <title>Michael Reece Rakestraw JR - Resume</title>
     <style>
-        body { 
-            font-family: 'Segoe UI', Arial, sans-serif; 
-            line-height: 1.5; 
-            color: #333; 
-            background: #f0f2f5; 
-            padding: 20px; 
-        }
-        .resume-container { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            background: #fff; 
-            padding: 40px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-        }
-        header { 
-            overflow: hidden; 
-            border-bottom: 2px solid #2c3e50; 
-            padding-bottom: 10px; 
-            margin-bottom: 20px; 
-        }
-        .header-content { 
-            float: left; 
-        }
-        .qr-code { 
-            float: right; 
-            text-align: center; 
-        }
-        h1 { 
-            margin: 0; 
-            color: #2c3e50; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            font-size: 24pt;
-        }
-        .contact-info { 
-            margin-top: 5px; 
-            font-size: 0.9em; 
-        }
-        h2 { 
-            border-bottom: 1px solid #eee; 
-            color: #2c3e50; 
-            font-size: 14pt; 
-            margin-top: 20px; 
-            margin-bottom: 10px; 
-            text-transform: uppercase;
-        }
-        h3 { 
-            display: flex; 
-            justify-content: space-between; 
-            color: #000; 
-            margin-top: 15px; 
-            margin-bottom: 5px; 
-            font-size: 12pt; 
-        }
-        .job-date { 
-            font-weight: normal; 
-            font-size: 0.9em; 
-        }
-        ul { 
-            margin: 0; 
-            padding-left: 1.2em; 
-        }
-        li { 
-            margin-bottom: 5px; 
-        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.5; color: #333; background: #f4f7f6; padding: 20px; }
+        .resume-container { max-width: 850px; margin: 0 auto; background: #fff; padding: 50px; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+        header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #2c3e50; padding-bottom: 20px; margin-bottom: 25px; }
+        h1 { margin: 0; color: #2c3e50; font-size: 26pt; text-transform: uppercase; letter-spacing: 1.5px; }
+        .contact-info { margin-top: 8px; font-size: 10pt; color: #555; }
+        .qr-code { text-align: center; }
+        h2 { border-bottom: 1px solid #ddd; color: #2c3e50; font-size: 15pt; margin-top: 25px; margin-bottom: 12px; text-transform: uppercase; }
+        h3 { display: flex; justify-content: space-between; margin-top: 18px; margin-bottom: 5px; font-size: 12.5pt; color: #000; }
+        .date { font-weight: normal; font-size: 10pt; color: #666; }
+        ul { margin: 0; padding-left: 1.2em; }
+        li { margin-bottom: 7px; }
+        .cover-letter { margin-top: 60px; padding-top: 40px; border-top: 2px dashed #eee; font-size: 11pt; }
+        .signature { margin-top: 20px; font-weight: bold; }
+        a { color: #2980b9; text-decoration: none; }
+        a:hover { text-decoration: underline; }
         @media print {
             body { background: #fff; padding: 0; }
             .resume-container { box-shadow: none; padding: 0; width: 100%; }
-            @page { margin: 0.5in; }
+            .page-break { page-break-before: always; }
         }
     </style>
 </head>
@@ -80,78 +30,84 @@
 
 <div class="resume-container">
     <header>
-        <div class="qr-code">
-            <img src="qr_code.png" alt="QR Code to Portfolio" width="100" height="100">
-            <p style="font-size: 10px; margin-top: 5px;">Scan for Portfolio</p>
-        </div>
-        <div class="header-content">
+        <div class="header-text">
             <h1>MICHAEL REECE RAKESTRAW JR</h1>
             <div class="contact-info">
-                Snellville, GA | 770-344-7933 | mrakestraw47@gmail.com<br>
-                <a href="#">Project Portfolio</a>
+                Snellville, GA | 770-344-7933 | <a href="mailto:mrakestraw47@gmail.com">mrakestraw47@gmail.com</a><br>
+                <a href="https://mrakestraw47.github.io/portfolio_2025/">Project Portfolio</a>
             </div>
+        </div>
+        <div class="qr-code">
+            <img src="qr_code.png" alt="Resume QR Code" width="90" height="90">
+            <div style="font-size: 9px; color: #888; margin-top: 5px;">Scan for digital</div>
         </div>
     </header>
 
-    <section id="summary">
+    <section>
         <h2>Professional Summary</h2>
-        <p>Operations Specialist dedicated to process excellence and workflow standardization[cite: 5]. Proven track record of transforming manual, informal procedures into structured digital systems[cite: 5]. Expert at authoring technical SOPs and leveraging Excel to optimize inventory replenishment, ensuring consistent operational continuity[cite: 6].</p>
+        <p>Operations Specialist dedicated to process excellence and workflow standardization. Proven track record of transforming manual, informal procedures into structured digital systems. Expert at authoring technical SOPs and leveraging Excel to optimize inventory replenishment, ensuring consistent operational continuity.</p>
     </section>
 
-    <section id="skills">
+    <section>
         <h2>Skills</h2>
-        <p>Inventory Management, Inventory Forecasting, Inventory Control, Supply Chain Coordination, Logistics Management, Internal Purchasing, Workflow Optimization, SOP Authoring, Python, SQL, Advanced Excel (VBA/Macros), Data Cleaning, Data Integrity, Operational Troubleshooting, Software Agility (TRAX, Mitchell1), Regulatory Compliance (FAA/IELTS), English (Native/Fluent), Google Data Analytics Professional Certificate[cite: 8].</p>
+        <p>Inventory Management, Inventory Forecasting, Inventory Control, Supply Chain Coordination, Logistics Management, Internal Purchasing, Workflow Optimization, SOP Authoring, Python, SQL, Advanced Excel (VBA/Macros), Data Cleaning, Data Integrity, Operational Troubleshooting, Software Agility (TRAX, Mitchell1), Regulatory Compliance (FAA/IELTS), English (Native/Fluent), Google Data Analytics Professional Certificate.</p>
     </section>
 
-    <section id="experience">
+    <section>
         <h2>Professional Experience</h2>
 
-        <h3>
-            <span>Freelance Operations Analyst | Self-Employed [cite: 10]</span>
-            <span class="job-date">Oct 2025 – Nov 2025 [cite: 11]</span>
-        </h3>
+        <h3><span>Freelance Operations Analyst | Self-Employed</span> <span class="date">Oct 2025 – Nov 2025</span></h3>
         <ul>
-            <li>Consulted with a client to define assessment goals, subsequently sourcing and processing over 300,000 rows of tax data to identify high-value target demographics[cite: 12].</li>
-            <li>Generated strategic reports containing ranked lists of organizations (filtered by asset density) to guide the client's decision-making process[cite: 13].</li>
+            <li>Consulted with a client to define assessment goals, subsequently sourcing and processing over 300,000 rows of tax data to identify high-value target demographics.</li>
+            <li>Generated strategic reports containing ranked lists of organizations (filtered by asset density) to guide the client's decision-making process.</li>
         </ul>
 
-        <h3>
-            <span>IELTS Invigilator | TALK Atlanta [cite: 14]</span>
-            <span class="job-date">Sept 2025 – Present [cite: 15]</span>
-        </h3>
+        <h3><span>IELTS Invigilator | TALK Atlanta</span> <span class="date">Sept 2025 – Present</span></h3>
         <ul>
-            <li>Enforced strict regulatory protocols for high-stakes examinations, performing double-count reconciliations of sensitive materials to ensure 100% accountability of all testing assets[cite: 16].</li>
-            <li>Coordinates logistics for time-sensitive assessments, ensuring efficient candidate flow and immediate resolution of technical or procedural anomalies[cite: 17].</li>
+            <li>Enforced strict regulatory protocols for high-stakes examinations, performing double-count reconciliations of sensitive materials to ensure 100% accountability of all testing assets.</li>
+            <li>Coordinates logistics for time-sensitive assessments, ensuring efficient candidate flow and immediate resolution of technical or procedural anomalies.</li>
         </ul>
 
-        <h3>
-            <span>Front End Associate / Operations Support | Lilburn Chevron [cite: 18]</span>
-            <span class="job-date">May 2022 – Oct 2025 [cite: 19]</span>
-        </h3>
+        <h3><span>Front End Associate / Operations Support | Lilburn Chevron</span> <span class="date">May 2022 – Oct 2025</span></h3>
         <ul>
-            <li>Investigated and deployed the system's underutilized Purchase Order function, configuring vendor profiles and part numbers to reduce inventory replenishment time by 85%[cite: 20].</li>
-            <li>Resolved an $800 billing anomaly by cross-referencing a register receipt with an open work order, confirming the double-charge and securing a refund before customer impact[cite: 21].</li>
-            <li>Authored detailed Standard Operating Procedures (SOPs) and checklists for shift closings, ensuring consistent execution and store policy adherence across the team[cite: 22].</li>
-            <li>Streamlined daily cash workflows by developing a web-based application (HTML/JS) to balance drawers, reducing closing calculation errors by 98%[cite: 23].</li>
+            <li>Investigated and deployed the system's underutilized Purchase Order function, configuring vendor profiles and part numbers to reduce inventory replenishment time by 85%.</li>
+            <li>Resolved an $800 billing anomaly by cross-referencing a register receipt with an open work order, confirming the double-charge and securing a refund before customer impact.</li>
+            <li>Authored detailed Standard Operating Procedures (SOPs) and checklists for shift closings, ensuring consistent execution and store policy adherence across the team.</li>
+            <li>Streamlined daily cash workflows by developing a web-based application (HTML/JS) to balance drawers, reducing closing calculation errors by 98%.</li>
         </ul>
 
-        <h3>
-            <span>Materials Specialist | JettPro Line Maintenance [cite: 24]</span>
-            <span class="job-date">Oct 2021 – Mar 2022 [cite: 25]</span>
-        </h3>
+        <h3><span>Materials Specialist | JettPro Line Maintenance</span> <span class="date">Oct 2021 – Mar 2022</span></h3>
         <ul>
-            <li>Audited and managed aircraft parts inventory within the TRAX database, identifying and resolving over $10,000 in inventory discrepancies through rigorous physical-to-digital verification[cite: 26].</li>
-            <li>Liaised between maintenance crews and external warehouses to expedite the sourcing of AOG (Aircraft on Ground) components, ensuring operational continuity[cite: 27].</li>
-            <li>Managed end-to-end logistics for COMAT shipments, executing strict protocol adherence for TRAX status updates and hazardous materials verification[cite: 28].</li>
+            <li>Audited and managed aircraft parts inventory within the TRAX database, identifying and resolving over $10,000 in inventory discrepancies through rigorous physical-to-digital verification.</li>
+            <li>Liaised between maintenance crews and external warehouses to expedite the sourcing of AOG (Aircraft on Ground) components, ensuring operational continuity.</li>
+            <li>Managed end-to-end logistics for COMAT shipments, executing strict protocol adherence for TRAX status updates and hazardous materials verification.</li>
         </ul>
     </section>
 
-    <section id="education">
+    <section>
         <h2>Education & Certifications</h2>
         <ul>
-            <li><strong>High School Diploma</strong> | Regina Caeli Academy, Norcross, GA (GPA: 4.0) [cite: 30]</li>
-            <li><strong>Google Data Analytics Professional Certificate</strong> | Coursera [cite: 30]</li>
+            <li><strong>High School Diploma</strong> | <a href="https://www.rcahybrid.org/">Regina Caeli Academy</a>, Norcross, GA (GPA: 4.0)</li>
+            <li><strong><a href="https://www.coursera.org/account/accomplishments/professional-cert/PDCYFIQVLZ9D">Google Data Analytics Professional Certificate</a></strong> | Coursera</li>
         </ul>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section class="cover-letter">
+        <h2>Cover Letter</h2>
+        <p><strong>March 6, 2026</strong></p>
+        <p>Hiring Manager,<br>Job Fair Participant</p>
+        
+        <p>I am writing to express my interest in professional operations and data integrity roles within your organization. My background includes extensive experience in logistics coordination, inventory management, and process standardization across the aviation, automotive, and data analysis sectors.</p>
+
+        <p>In my recent freelance capacity, I sourced and processed over 300,000 rows of tax assessment data, identifying and mapping missing data points to ensure the accuracy of strategic reports. During my tenure at JettPro Line Maintenance, I managed high-value aircraft parts inventory within the TRAX database, where I conducted weekly audits and resolved significant discrepancies between physical stock and digital records. Additionally, while at Lilburn Chevron, I reduced inventory replenishment time by 85% by configuring and implementing a software-based Purchase Order system.</p>
+
+        <p>My technical proficiency includes advanced Excel for automating workflows and generating standardized documentation, as well as software agility with various shop management and database systems. I hold a Google Data Analytics Professional Certificate, which supports my investigative approach to troubleshooting operational anomalies and maintaining data integrity.</p>
+
+        <p>I am eager to discuss how my experience in protocol enforcement and workflow optimization can support your team's operational goals. Thank you for your time and consideration.</p>
+
+        <p class="signature">Sincerely,<br>Michael Reece Rakestraw JR</p>
     </section>
 </div>
 
